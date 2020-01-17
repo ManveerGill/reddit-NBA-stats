@@ -4,7 +4,7 @@ import json
 import config
 from nameparser import HumanName
 
-subreddit_choice = ''
+subreddit_choice = '' # Set this to the subreddit you wish to monitor.
 
 with open('players.json', 'r') as fp: # Load JSON file into program
     obj = json.load(fp)
