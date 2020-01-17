@@ -1,0 +1,5 @@
+client_id = 'id'
+client_secret = 'secret'
+username = 'username'
+password = 'password'
+user_agent = 'praw'
