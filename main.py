@@ -4,7 +4,7 @@ import json
 import config
 from nameparser import HumanName
 
-subreddit_choice = '' # Set this to the subreddit you wish to monitor.
+SUBREDDIT_CHOICE = '' # Set this to the subreddit you wish to monitor.
 
 with open('players.json', 'r') as fp: # Load JSON file into program
     obj = json.load(fp)
@@ -33,15 +33,15 @@ reddit = praw.Reddit(
     password = config.password ,
     user_agent = config.user_agent)
 
-subreddit = reddit.subreddit(subreddit_choice) # We only want the bot running on this specific subreddit
-keyphrase = '!stats ' # Bot responds to this keyphrase only.
+subreddit = reddit.subreddit(SUBREDDIT_CHOICE) # We only want the bot running on this specific subreddit
+KEYPHRASE = '!stats ' # Bot responds to this keyphrase only.
 
 for comment in subreddit.stream.comments(skip_existing=True): # Watch the comment stream on our subreddit of choice
-    if keyphrase in comment.body:
+    if KEYPHRASE in comment.body:
         tableBase = "PTS|REB|AST|STL|BLK|TOV|3PM|FG%|FT%\n:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--\n" # We want to format our response neatly, this is just the formatting convention Reddit uses to create tables. 
         N = 0 # N represents the number of games to include in our averages. N = 0 will default to pulling averages for the entire season so far. 
 
-        player = comment.body.replace(keyphrase, '') # Get rid of the keyphrase leaving us with the players name and optionally an N value
+        player = comment.body.replace(KEYPHRASE, '') # Get rid of the keyphrase leaving us with the players name and optionally an N value
         player = HumanName(player.translate(str.maketrans('','',"!?.,'-")))
 
         if (player.first.isdigit() == True): # If the user entered a number
