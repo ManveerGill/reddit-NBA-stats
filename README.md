@@ -20,4 +20,4 @@ Clone repository and ensure that you have installed all of the required modules 
 This file can be used to update 'players.json'. Simply run the script and it will automatically overwrite 'players.json' or create a new file if it does not exist.
 
 ## Example
-Placeholder.
+![](images/cMP2SD0.png)
