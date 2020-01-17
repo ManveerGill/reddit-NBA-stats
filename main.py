@@ -4,6 +4,8 @@ import json
 import config
 from nameparser import HumanName
 
+subreddit_choice = ''
+
 with open('players.json', 'r') as fp: # Load JSON file into program
     obj = json.load(fp)
 
@@ -31,7 +33,7 @@ reddit = praw.Reddit(
     password = config.password ,
     user_agent = config.user_agent)
 
-subreddit = reddit.subreddit('testzoneting') # We only want the bot running on this specific subreddit
+subreddit = reddit.subreddit(subreddit_choice) # We only want the bot running on this specific subreddit
 keyphrase = '!stats ' # Bot responds to this keyphrase only.
 
 for comment in subreddit.stream.comments(skip_existing=True): # Watch the comment stream on our subreddit of choice
