@@ -22,4 +22,4 @@ This file can be used to update 'players.json'. Simply run the script and it wil
 ## Example
 Here is an example query where we ask to retreive LeBron James' statistics over his last 5 games.
 
-![](images/cMP2SD0.png)
+![](images/chrome_Se9OCpglEA.png)
