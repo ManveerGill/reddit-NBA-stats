@@ -38,7 +38,7 @@ KEYPHRASE = '!stats ' # Bot responds to this keyphrase only.
 
 for comment in subreddit.stream.comments(skip_existing=True): # Watch the comment stream on our subreddit of choice
     if KEYPHRASE in comment.body:
-        tableBase = "PTS|REB|AST|STL|BLK|TOV|3PM|FG%|FT%\n:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--\n" # We want to format our response neatly, this is just the formatting convention Reddit uses to create tables. 
+        tableBase = "GP|PTS|REB|AST|STL|BLK|TOV|3PM|FG%|FT%\n:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--|:--\n" # We want to format our response neatly, this is just the formatting convention Reddit uses to create tables. 
         N = 0 # N represents the number of games to include in our averages. N = 0 will default to pulling averages for the entire season so far. 
 
         player = comment.body.replace(KEYPHRASE, '') # Get rid of the keyphrase leaving us with the players name and optionally an N value
@@ -60,7 +60,7 @@ for comment in subreddit.stream.comments(skip_existing=True): # Watch the commen
             data = r.json()
             try:
                 stats = data["resultSets"][0]["rowSet"][0] # The data we want is nested here
-                tableBase = tableBase + str(stats[26]) + "|" + str(stats[18]) + "|" + str(stats[19]) + "|" + str(stats[21]) + "|" + str(stats[22]) + "|" + str(stats[20]) + "|" + str(stats[10]) + "|" + str(stats[9]) + "|" + str(stats[15]) # Refer to /doc/headerMapping.txt for additional mappings.
+                tableBase = tableBase + str(stats[2]) + "|" + str(stats[26]) + "|" + str(stats[18]) + "|" + str(stats[19]) + "|" + str(stats[21]) + "|" + str(stats[22]) + "|" + str(stats[20]) + "|" + str(stats[10]) + "|" + str(stats[9]) + "|" + str(stats[15]) # Refer to /doc/headerMapping.txt for additional mappings.
                 comment.reply(tableBase)
             except:
                 comment.reply("Error: This player is active on a roster but has not played this season.")
